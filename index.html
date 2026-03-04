@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Muscles — ابنِ جسمك</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --red: #E31E24;
+  --red2: #FF3B3F;
+  --lime: #C8FF00;
+  --dark: #0A0A0A;
+  --dark2: #111111;
+  --dark3: #1A1A1A;
+  --card: #141414;
+  --border: #2A2A2A;
+  --text: #F0F0F0;
+  --muted: #7A7A7A;
+  --white: #FFFFFF;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ───────────── SCROLLBAR ───────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+/* ───────────── NAV ───────────── */
+.topbar {
+  background: #050505;
+  border-bottom: 1px solid rgba(227,30,36,0.2);
+  padding: 0.5rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.topbar a { color: var(--muted); text-decoration: none; transition: color 0.3s; }
+.topbar a:hover { color: var(--red); }
+.topbar-left { display: flex; gap: 1.5rem; align-items: center; }
+.topbar-right { display: flex; gap: 1rem; align-items: center; font-size: 1rem; }
+.topbar-right a { color: var(--muted); font-size: 1rem; transition: color 0.3s; }
+.topbar-right a:hover { color: var(--red); }
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(10,10,10,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+.logo .my { color: var(--white); }
+.logo .muscles { color: var(--red); }
+.logo-icon {
+  width: 38px; height: 38px;
+  background: var(--red);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 0; height: 2px;
+  background: var(--red);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+
+.btn-membership {
+  background: var(--red);
+  color: var(--white);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.7rem 1.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-membership:hover {
+  background: var(--red2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(227,30,36,0.4);
+}
+
+/* ───────────── HERO ───────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80');
+  background-size: cover;
+  background-position: center 30%;
+  filter: brightness(0.35);
+}
+
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(10,10,10,0.98) 40%, rgba(10,10,10,0.3) 100%);
+}
+
+.hero-dots {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 5rem;
+  max-width: 800px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(227,30,36,0.15);
+  border: 1px solid rgba(227,30,36,0.4);
+  color: var(--red);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(4rem, 9vw, 9rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+.hero-title .line1 { color: var(--white); display: block; }
+.hero-title .line2 { color: var(--red); display: block; }
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 1.5rem 0 2.5rem;
+  max-width: 500px;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  animation: fadeUp 0.8s ease 0.8s both;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--red);
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--red);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(227,30,36,0.35);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  transition: all 0.3s;
+}
+.btn-secondary:hover {
+  border-color: var(--white);
+  transform: translateY(-3px);
+}
+
+.hero-stats {
+  position: absolute;
+  bottom: 0; right: 0;
+  background: rgba(0,0,0,0.8);
+  border-top: 1px solid var(--border);
+  border-right: none;
+  border-bottom: none;
+  border-left: 1px solid var(--border);
+  display: flex;
+  z-index: 10;
+  animation: fadeIn 1s ease 1s both;
+}
+.h-stat {
+  padding: 1.5rem 2.5rem;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.h-stat:first-child { border-right: none; }
+.h-stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+}
+.h-stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+
+/* ───────────── SECTION COMMONS ───────────── */
+section { padding: 6rem 5rem; }
+
+.section-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.section-label::before {
+  content: '';
+  width: 30px; height: 2px;
+  background: var(--red);
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.section-title span { color: var(--red); }
+
+.section-desc {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 550px;
+}
+
+/* ───────────── CATEGORIES ───────────── */
+.categories { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.cat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.cat-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 320px;
+  cursor: pointer;
+  group: true;
+}
+
+.cat-card:nth-child(1) { grid-column: span 2; height: 380px; }
+.cat-card:nth-child(4) { grid-column: span 2; height: 320px; }
+
+.cat-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  display: block;
+}
+.cat-card:hover .cat-img { transform: scale(1.08); }
+
+.cat-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+  transition: background 0.4s;
+}
+.cat-card:hover .cat-overlay { background: linear-gradient(to top, rgba(227,30,36,0.85) 0%, rgba(0,0,0,0.4) 100%); }
+
+.cat-body {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 2rem;
+}
+
+.cat-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.cat-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.4rem;
+}
+
+.cat-desc {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.cat-card:hover .cat-desc { max-height: 80px; }
+
+.cat-tag {
+  display: inline-block;
+  margin-top: 0.8rem;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  padding: 0.3rem 0.9rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+/* ───────────── EQUIPMENT ───────────── */
+.equipment { background: var(--dark); }
+
+.eq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.eq-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.eq-card:hover {
+  border-color: var(--red);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(227,30,36,0.2);
+}
+
+.eq-img-wrap {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.eq-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+  display: block;
+}
+.eq-card:hover .eq-img-wrap img { transform: scale(1.1); }
+
+.eq-number {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.eq-body { padding: 1.5rem; }
+
+.eq-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.eq-icon {
+  width: 38px; height: 38px;
+  background: rgba(227,30,36,0.12);
+  border: 1px solid rgba(227,30,36,0.25);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--red);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.eq-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.eq-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+.eq-muscles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.eq-muscle-tag {
+  font-size: 0.72rem;
+  background: rgba(227,30,36,0.08);
+  border: 1px solid rgba(227,30,36,0.2);
+  color: var(--red);
+  padding: 0.2rem 0.7rem;
+  border-radius: 100px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ───────────── POSITIONS ───────────── */
+.positions { background: var(--dark2); border-top: 1px solid var(--border); }
+
+.pos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.pos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.pos-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  position: relative;
+}
+.pos-card:hover {
+  border-color: rgba(227,30,36,0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.pos-img-wrap { height: 240px; overflow: hidden; position: relative; }
+.pos-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.5s; }
+.pos-card:hover .pos-img-wrap img { transform: scale(1.07); }
+
+.pos-level {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 2px;
+}
+.pos-level.beginner { background: rgba(0,200,120,0.9); color: #000; }
+.pos-level.intermediate { background: rgba(255,184,0,0.9); color: #000; }
+.pos-level.advanced { background: rgba(227,30,36,0.9); color: #fff; }
+
+.pos-body { padding: 1.5rem; }
+.pos-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.pos-info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+.pos-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.pos-meta i { color: var(--red); font-size: 0.75rem; }
+.pos-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
+
+/* ───────────── CTA BANNER ───────────── */
+.cta-banner {
+  position: relative;
+  padding: 5rem;
+  overflow: hidden;
+  text-align: center;
+}
+.cta-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.2);
+}
+.cta-overlay {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(227,30,36,0.3) 0%, rgba(10,10,10,0.8) 70%);
+}
+.cta-content { position: relative; z-index: 10; }
+.cta-discount {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+}
+.cta-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.cta-title span { color: var(--red); }
+.cta-sub { color: var(--muted); font-size: 1rem; margin-bottom: 2.5rem; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; }
+
+/* ───────────── FOOTER ───────────── */
+footer {
+  background: #050505;
+  border-top: 1px solid var(--border);
+  padding: 4rem 5rem 2rem;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.footer-brand {}
+.footer-logo-wrap {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.footer-logo-icon {
+  width: 35px; height: 35px;
+  background: var(--red);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.social-btn {
+  width: 42px; height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.social-btn:hover { border-color: var(--red); color: var(--red); background: rgba(227,30,36,0.08); }
+.social-btn.instagram:hover { border-color: #E1306C; color: #E1306C; background: rgba(225,48,108,0.08); }
+
+.footer-col h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 30px; height: 2px;
+  background: var(--red);
+}
+
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.7rem; }
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.footer-links a:hover { color: var(--red); }
+.footer-links a::before { content: '›'; color: var(--red); font-size: 1rem; }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.footer-copy span { color: var(--red); }
+
+.footer-dev {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.footer-dev-text {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.footer-dev-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 1px;
+}
+.footer-dev-name span { color: var(--red); }
+
+.dev-ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.dev-ig-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(253,29,29,0.4);
+}
+
+/* ───────────── HERO GIF ANIMATION ───────────── */
+.hero-gif-wrap {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-gif-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.18;
+}
+
+/* ───────────── DETAIL MODAL ───────────── */
+.detail-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(10px);
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  animation: fadeIn 0.3s ease;
+}
+.detail-modal.open { display: flex; align-items: flex-start; justify-content: center; }
+.detail-inner {
+  background: var(--dark3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  max-width: 860px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  animation: slideUp 0.4s ease;
+}
+@keyframes slideUp {
+  from { opacity:0; transform: translateY(40px); }
+  to { opacity:1; transform: translateY(0); }
+}
+.detail-close {
+  position: absolute;
+  top: 1.2rem; left: 1.2rem;
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  color: var(--muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+  z-index: 10;
+}
+.detail-close:hover { border-color: var(--red); color: var(--red); }
+.detail-hero-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.7);
+}
+.detail-hero-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(to top, var(--dark3), transparent);
+}
+.detail-img-wrap { position: relative; }
+.detail-title-over {
+  position: absolute;
+  bottom: 2rem; right: 2rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+}
+.detail-title-over span { color: var(--red); }
+.detail-body { padding: 2rem; }
+.detail-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.detail-tag {
+  font-size: 0.75rem;
+  background: rgba(227,30,36,0.1);
+  border: 1px solid rgba(227,30,36,0.3);
+  color: var(--red);
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  font-weight: 600;
+}
+.detail-section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.detail-section-title::before { content:''; width:20px; height:2px; background:var(--red); }
+.detail-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.detail-info-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+.detail-info-box .dib-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+}
+.detail-info-box .dib-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.detail-steps {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+.detail-steps li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+.detail-steps li .step-num {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  background: var(--red);
+  border-radius: 50%;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+}
+.detail-mistakes {
+  background: rgba(227,30,36,0.06);
+  border: 1px solid rgba(227,30,36,0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.detail-mistakes ul { list-style: none; }
+.detail-mistakes ul li {
+  display: flex; align-items: flex-start; gap: 0.7rem;
+  color: var(--muted); font-size: 0.9rem; padding: 0.4rem 0;
+}
+.detail-mistakes ul li::before { content:'✗'; color:var(--red); font-weight:700; flex-shrink:0; }
+.detail-tips {
+  background: rgba(0,200,80,0.05);
+  border: 1px solid rgba(0,200,80,0.15);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.detail-tips ul { list-style: none; }
+.detail-tips ul li {
+  display: flex; align-items: flex-start; gap: 0.7rem;
+  color: var(--muted); font-size: 0.9rem; padding: 0.4rem 0;
+}
+.detail-tips ul li::before { content:'✓'; color:#00c853; font-weight:700; flex-shrink:0; }
+.detail-yt {
+  margin-bottom: 2rem;
+}
+.detail-yt iframe {
+  width: 100%;
+  height: 360px;
+  border: none;
+  border-radius: 8px;
+  display: block;
+}
+.clickable-card { cursor: pointer; }
+.clickable-card:hover .pos-name,
+.clickable-card:hover .eq-name { color: var(--red); }
+.view-more-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(227,30,36,0.1);
+  border: 1px solid rgba(227,30,36,0.3);
+  color: var(--red);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.2rem 0.7rem;
+  border-radius: 3px;
+  margin-top: 0.7rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ───────────── ANIMATIONS ───────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ───────────── MOBILE ───────────── */
+@media (max-width: 1024px) {
+  nav, section, footer { padding-left: 2rem; padding-right: 2rem; }
+  .topbar { padding-left: 2rem; padding-right: 2rem; }
+  .cat-grid { grid-template-columns: 1fr 1fr; }
+  .cat-card:nth-child(1) { grid-column: span 2; }
+  .cat-card:nth-child(4) { grid-column: span 1; }
+  .pos-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 640px) {
+  .topbar { display: none; }
+  .nav-links { display: none; }
+  .hero-content { padding: 0 1.5rem; }
+  .hero-stats { display: none; }
+  .cat-grid, .pos-grid { grid-template-columns: 1fr; }
+  .cat-card:nth-child(1), .cat-card:nth-child(4) { grid-column: span 1; }
+  .footer-top { grid-template-columns: 1fr; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .hero-btns { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ───────────── TOPBAR ───────────── -->
+<div class="topbar">
+  <div class="topbar-left">
+    <a href="tel:+213000000000"><i class="fa-solid fa-phone"></i> +213 000 000 000</a>
+    <a href="#"><i class="fa-solid fa-envelope"></i> <span class="__cf_email__" data-cfemail="422b2c242d022f3b2f3731212e27316c2638">[email&#160;protected]</span></a>
+  </div>
+  <div class="topbar-right">
+    <a href="https://www.instagram.com/domx.54" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+</div>
+
+<!-- ───────────── NAV ───────────── -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon"><i class="fa-solid fa-dumbbell"></i></div>
+    <span class="my">MY</span><span class="muscles">MUSCLES</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#categories">الأقسام</a></li>
+    <li><a href="#equipment">المعدات</a></li>
+    <li><a href="#positions">الوضعيات</a></li>
+    <li><a href="#about">من نحن</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+  <a href="#cta" class="btn-membership">انضم الآن</a>
+</nav>
+
+<!-- ───────────── HERO ───────────── -->
+<section class="hero" style="padding:0">
+  <div class="hero-bg"></div>
+  <div class="hero-gif-wrap">
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHU1NXI1bXI4M3BkZXk4azI4amlybWIwZTluMnkwbjBvNGI4ZWtpNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l46Cy1rHbQ92uuLXa/giphy.gif" alt="workout animation">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-dots"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fa-solid fa-fire"></i> منذ 2020 · أفضل برامج اللياقة</div>
+    <h1 class="hero-title">
+      <span class="line1">ابنِ</span>
+      <span class="line2">جسمك</span>
+    </h1>
+    <p class="hero-sub">
+      برامج تدريبية احترافية لكل المستويات · بدون معدات أو بالصالة · ابدأ رحلتك نحو الجسم المثالي اليوم
+    </p>
+    <div class="hero-btns">
+      <a href="#categories" class="btn-primary"><i class="fa-solid fa-play"></i> ابدأ التدريب</a>
+      <a href="#equipment" class="btn-secondary"><i class="fa-solid fa-circle-info"></i> اعرف أكثر</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="h-stat">
+      <div class="h-stat-num">500+</div>
+      <div class="h-stat-label">متدرب نشط</div>
+    </div>
+    <div class="h-stat">
+      <div class="h-stat-num">50+</div>
+      <div class="h-stat-label">برنامج تدريبي</div>
+    </div>
+    <div class="h-stat">
+      <div class="h-stat-num">15+</div>
+      <div class="h-stat-label">مدرب معتمد</div>
+    </div>
+    <div class="h-stat">
+      <div class="h-stat-num">5★</div>
+      <div class="h-stat-label">تقييم المستخدمين</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── CATEGORIES ───────────── -->
+<section class="categories" id="categories">
+  <div class="cat-header">
+    <div>
+      <div class="section-label">أقسام اللياقة البدنية</div>
+      <h2 class="section-title">اختر <span>تدريبك</span></h2>
+    </div>
+    <p class="section-desc">من الكارديو إلى رفع الأثقال — كل ما تحتاجه لجسم قوي وصحي في مكان واحد</p>
+  </div>
+
+  <div class="cat-grid">
+
+    <div class="cat-card reveal">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80" alt="قوة العضلات">
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <span class="cat-icon"><i class="fa-solid fa-dumbbell"></i></span>
+        <div class="cat-name">قوة العضلات</div>
+        <div class="cat-desc">تمارين مقاومة وأثقال لبناء كتلة عضلية ضخمة وقوة حقيقية. مناسبة لكل المستويات من المبتدئ إلى المحترف.</div>
+        <span class="cat-tag">Strength Training</span>
+      </div>
+    </div>
+
+    <div class="cat-card reveal reveal-delay-1">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=600&q=80" alt="كارديو">
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <span class="cat-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+        <div class="cat-name">كارديو</div>
+        <div class="cat-desc">تمارين هوائية لحرق الدهون وتقوية القلب والرئتين.</div>
+        <span class="cat-tag">Cardio</span>
+      </div>
+    </div>
+
+    <div class="cat-card reveal reveal-delay-2">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="HIIT">
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <span class="cat-icon"><i class="fa-solid fa-bolt"></i></span>
+        <div class="cat-name">HIIT</div>
+        <div class="cat-desc">تدريب التحمل والكثافة العالية لحرق دهون فائق.</div>
+        <span class="cat-tag">High Intensity</span>
+      </div>
+    </div>
+
+    <div class="cat-card reveal reveal-delay-3">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=900&q=80" alt="مرونة">
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <span class="cat-icon"><i class="fa-solid fa-person-walking-arrow-loop-left"></i></span>
+        <div class="cat-name">مرونة وتوازن</div>
+        <div class="cat-desc">تمارين الإطالة واليوغا لتحسين المرونة والتعافي السريع بعد التدريب المكثف.</div>
+        <span class="cat-tag">Flexibility</span>
+      </div>
+    </div>
+
+    <div class="cat-card reveal reveal-delay-4">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80" alt="تغذية">
+      <div class="cat-overlay"></div>
+      <div class="cat-body">
+        <span class="cat-icon"><i class="fa-solid fa-leaf"></i></span>
+        <div class="cat-name">التغذية الرياضية</div>
+        <div class="cat-desc">خطط غذائية متكاملة لدعم بناء العضلات وحرق الدهون.</div>
+        <span class="cat-tag">Nutrition</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───────────── EQUIPMENT ───────────── -->
+<section class="equipment" id="equipment">
+  <div class="section-label">أدوات العمل</div>
+  <h2 class="section-title">كل أداة <span>وما تخدم</span></h2>
+  <p class="section-desc">تعرف على أهم المعدات الرياضية وفائدة كل واحدة منها على جسمك وعضلاتك</p>
+
+  <div class="eq-grid">
+
+    <div class="eq-card reveal">
+      <div class="eq-img-wrap">
+        <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=600&q=80" alt="دامبل">
+        <div class="eq-number">01</div>
+      </div>
+      <div class="eq-body">
+        <div class="eq-icon-row">
+          <div class="eq-icon"><i class="fa-solid fa-dumbbell"></i></div>
+          <div class="eq-name">الدامبل (Dumbbell)</div>
+        </div>
+        <p class="eq-desc">الأداة الأكثر تنوعاً في صالة الجيم. تُستخدم لتمارين الضغط والسحب والكيرل وتدريب معظم عضلات الجسم العلوي والسفلي بحركات أحادية ومزدوجة.</p>
+        <div class="eq-muscles">
+          <span class="eq-muscle-tag">الصدر</span>
+          <span class="eq-muscle-tag">البايسبس</span>
+          <span class="eq-muscle-tag">الترايسبس</span>
+          <span class="eq-muscle-tag">الأكتاف</span>
+          <span class="eq-muscle-tag">الظهر</span>
+        </div>
+        <div class="view-more-badge"><i class="fa-solid fa-arrow-left"></i> تفاصيل كاملة</div>
+      </div>
+    </div>
+
+    <div class="eq-card reveal reveal-delay-1">
+      <div class="eq-img-wrap">
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80" alt="بار">
+        <div class="eq-number">02</div>
+      </div>
+      <div class="eq-body">
+        <div class="eq-icon-row">
+          <div class="eq-icon"><i class="fa-solid fa-minus"></i></div>
+          <div class="eq-name">البار (Barbell)</div>
+        </div>
+        <p class="eq-desc">سيد المعدات لبناء القوة الحقيقية. يُستخدم في الرفع الميت والقرفصاء والضغط بنقل أحمال ثقيلة جداً لضمان تحفيز أقصى للعضلات وبناء كتلة ضخمة.</p>
+        <div class="eq-muscles">
+          <span class="eq-muscle-tag">القرفصاء</span>
+          <span class="eq-muscle-tag">الرفع الميت</span>
+          <span class="eq-muscle-tag">البنش برس</span>
+          <span class="eq-muscle-tag">الكل</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="eq-card reveal reveal-delay-2">
+      <div class="eq-img-wrap">
+        <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?w=600&q=80" alt="حبل مقاومة">
+        <div class="eq-number">03</div>
+      </div>
+      <div class="eq-body">
+        <div class="eq-icon-row">
+          <div class="eq-icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+          <div class="eq-name">حبال المقاومة</div>
+        </div>
+        <p class="eq-desc">مثالية للتدريب في المنزل أو السفر. توفر مقاومة تصاعدية تُفعّل الألياف العضلية بشكل مختلف عن الأثقال التقليدية. رائعة للإطالة والتعافي وتقوية المفاصل.</p>
+        <div class="eq-muscles">
+          <span class="eq-muscle-tag">الأرجل</span>
+          <span class="eq-muscle-tag">الأكتاف</span>
+          <span class="eq-muscle-tag">الظهر</span>
+          <span class="eq-muscle-tag">المرونة</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="eq-card reveal reveal-delay-3">
+      <div class="eq-img-wrap">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="كيتلبيل">
+        <div class="eq-number">04</div>
+      </div>
+      <div class="eq-body">
+        <div class="eq-icon-row">
+          <div class="eq-icon"><i class="fa-solid fa-weight-hanging"></i></div>
+          <div class="eq-name">الكيتلبيل (Kettlebell)</div>
+        </div>
+        <p class="eq-desc">أداة ديناميكية تجمع بين القوة والكارديو في وقت واحد. حركة السوينج الشهيرة تستهدف الجسم بالكامل خاصة الأرداف والظهر السفلي والكتفين بحركات انفجارية.</p>
+        <div class="eq-muscles">
+          <span class="eq-muscle-tag">الأرداف</span>
+          <span class="eq-muscle-tag">الظهر السفلي</span>
+          <span class="eq-muscle-tag">الكارديو</span>
+          <span class="eq-muscle-tag">الكور</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="eq-card reveal reveal-delay-4">
+      <div class="eq-img-wrap">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" alt="بار العقلة">
+        <div class="eq-number">05</div>
+      </div>
+      <div class="eq-body">
+        <div class="eq-icon-row">
+          <div class="eq-icon"><i class="fa-solid fa-person-hanging"></i></div>
+          <div class="eq-name">بار العقلة (Pull-up Bar)</div>
+        </div>
+        <p class="eq-desc">أقوى تمرين لبناء ظهر واسع وقوي. العقلة تعمل على اللاتيسموس دورسي والبايسبس والكور في آنٍ واحد. يمكن تثبيته في الباب بسهولة لتدريب يومي في المنزل.</p>
+        <div class="eq-muscles">
+          <span class="eq-muscle-tag">الظهر العلوي</span>
+          <span class="eq-muscle-tag">البايسبس</span>
+          <span class="eq-muscle-tag">الكور</span>
+          <span class="eq-muscle-tag">الكتفين</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="eq-card reveal reveal-delay-5">
+      <div class="eq-img-wrap">
+        <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80" alt="حبل القفز">
+        <div class="eq-number">06</div>
+      </div>
+      <div class="eq-body">
+        <div class="eq-icon-row">
+          <div class="eq-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div class="eq-name">حبل القفز (Jump Rope)</div>
+        </div>
+        <p class="eq-desc">أفضل أداة للإحماء وحرق السعرات بسرعة خيالية. 10 دقائق من القفز تعادل جري 1.5 كلم! تحسّن التنسيق، توازن الجسم، وقوة الساقين بشكل مذهل.</p>
+        <div class="eq-muscles">
+          <span class="eq-muscle-tag">الكارديو</span>
+          <span class="eq-muscle-tag">الساقين</span>
+          <span class="eq-muscle-tag">التنسيق</span>
+          <span class="eq-muscle-tag">حرق دهون</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="eq-card reveal">
+      <div class="eq-img-wrap">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="كرة طبية">
+        <div class="eq-number">07</div>
+      </div>
+      <div class="eq-body">
+        <div class="eq-icon-row">
+          <div class="eq-icon"><i class="fa-solid fa-circle"></i></div>
+          <div class="eq-name">الكرة الطبية (Medicine Ball)</div>
+        </div>
+        <p class="eq-desc">أداة تفجيرية لتمارين القوة والسرعة. رمي الكرة وإمساكها يُنمّي القوة الانفجارية والتنسيق. مثالية لتدريبات الكور والحركات الرياضية المركّبة.</p>
+        <div class="eq-muscles">
+          <span class="eq-muscle-tag">الكور</span>
+          <span class="eq-muscle-tag">الصدر</span>
+          <span class="eq-muscle-tag">القوة الانفجارية</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="eq-card reveal reveal-delay-1">
+      <div class="eq-img-wrap">
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="تريدميل">
+        <div class="eq-number">08</div>
+      </div>
+      <div class="eq-body">
+        <div class="eq-icon-row">
+          <div class="eq-icon"><i class="fa-solid fa-person-running"></i></div>
+          <div class="eq-name">جهاز الجري (Treadmill)</div>
+        </div>
+        <p class="eq-desc">ملك أجهزة الكارديو. يسمح بالجري في أي وقت بغض النظر عن الطقس. يحرق من 400-800 سعرة/ساعة حسب السرعة والميل. ويُقوّي القلب والشرايين بشكل ملحوظ.</p>
+        <div class="eq-muscles">
+          <span class="eq-muscle-tag">القلب</span>
+          <span class="eq-muscle-tag">الساقين</span>
+          <span class="eq-muscle-tag">حرق دهون</span>
+          <span class="eq-muscle-tag">التحمل</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───────────── POSITIONS ───────────── -->
+<section class="positions" id="positions">
+  <div class="pos-header">
+    <div>
+      <div class="section-label">الوضعيات التدريبية</div>
+      <h2 class="section-title">تعلّم <span>الوضعية</span> الصحيحة</h2>
+    </div>
+    <p class="section-desc">الوضعية الخاطئة = إصابة مضمونة. تعلّم الشكل الصحيح لكل تمرين لتحصل على أفضل نتيجة وتتجنب الأذى</p>
+  </div>
+
+  <div class="pos-grid">
+
+    <div class="pos-card reveal">
+      <div class="pos-img-wrap">
+        <img src="https://images.unsplash.com/photo-1566241832378-917a0f30db2c?w=600&q=80" alt="القرفصاء">
+        <span class="pos-level beginner">مبتدئ</span>
+      </div>
+      <div class="pos-body">
+        <div class="pos-name">القرفصاء (Squat)</div>
+        <div class="pos-info">
+          <span class="pos-meta"><i class="fa-solid fa-fire"></i> 3-4 جولات</span>
+          <span class="pos-meta"><i class="fa-solid fa-repeat"></i> 15-20 تكرار</span>
+        </div>
+        <p class="pos-desc">ظهرك مستقيم، صدرك للأعلى، ركبتيك تتبعان اتجاه أصابع قدمك. انزل حتى تكون فخذيك موازيَيْن للأرض ثم ارتفع بقوة عبر الكعبين.</p>
+      </div>
+    </div>
+
+    <div class="pos-card reveal reveal-delay-1">
+      <div class="pos-img-wrap">
+        <img src="https://images.unsplash.com/photo-1571019613576-2b22c76fd955?w=600&q=80" alt="ضغط">
+        <span class="pos-level beginner">مبتدئ</span>
+      </div>
+      <div class="pos-body">
+        <div class="pos-name">الضغط (Push-Up)</div>
+        <div class="pos-info">
+          <span class="pos-meta"><i class="fa-solid fa-fire"></i> 3 جولات</span>
+          <span class="pos-meta"><i class="fa-solid fa-repeat"></i> 10-20 تكرار</span>
+        </div>
+        <p class="pos-desc">جسمك خط مستقيم من الرأس للقدمين. يديك أعرض من الكتفين. انزل حتى يكاد صدرك يلمس الأرض ثم ارتفع بالضغط على راحتيك بقوة.</p>
+      </div>
+    </div>
+
+    <div class="pos-card reveal reveal-delay-2">
+      <div class="pos-img-wrap">
+        <img src="https://images.unsplash.com/photo-1598971639058-fab3c3109a34?w=600&q=80" alt="بلانك">
+        <span class="pos-level intermediate">متوسط</span>
+      </div>
+      <div class="pos-body">
+        <div class="pos-name">البلانك (Plank)</div>
+        <div class="pos-info">
+          <span class="pos-meta"><i class="fa-solid fa-fire"></i> 3 جولات</span>
+          <span class="pos-meta"><i class="fa-solid fa-clock"></i> 30-60 ثانية</span>
+        </div>
+        <p class="pos-desc">تثبيت الكور بالكامل. مرفقاك تحت كتفيك مباشرة، أرداف لا تعلو ولا تنخفض، نظرة للأرض. تنفّس بانتظام ولا تحبس هواءك.</p>
+      </div>
+    </div>
+
+    <div class="pos-card reveal reveal-delay-3">
+      <div class="pos-img-wrap">
+        <img src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=600&q=80" alt="رفع ميت">
+        <span class="pos-level intermediate">متوسط</span>
+      </div>
+      <div class="pos-body">
+        <div class="pos-name">الرفع الميت (Deadlift)</div>
+        <div class="pos-info">
+          <span class="pos-meta"><i class="fa-solid fa-fire"></i> 4 جولات</span>
+          <span class="pos-meta"><i class="fa-solid fa-repeat"></i> 6-10 تكرار</span>
+        </div>
+        <p class="pos-desc">ظهرك مستقيم بشكل صارم — لا انحناء أبداً! البار قريب من الجسم طوال الحركة. ابدأ بالدفع عبر الكعبين واسحب لأعلى بقوة الأرداف والفخذين.</p>
+      </div>
+    </div>
+
+    <div class="pos-card reveal reveal-delay-4">
+      <div class="pos-img-wrap">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80" alt="عقلة">
+        <span class="pos-level advanced">متقدم</span>
+      </div>
+      <div class="pos-body">
+        <div class="pos-name">العقلة (Pull-Up)</div>
+        <div class="pos-info">
+          <span class="pos-meta"><i class="fa-solid fa-fire"></i> 3 جولات</span>
+          <span class="pos-meta"><i class="fa-solid fa-repeat"></i> 6-12 تكرار</span>
+        </div>
+        <p class="pos-desc">إمساك قضيب أعرض من الكتفين. اسحب نفسك بشد الكوعين نحو الأرض ولا تتأرجح. ذقنك فوق القضيب ثم انزل ببطء للتحكم والاستفادة القصوى.</p>
+      </div>
+    </div>
+
+    <div class="pos-card reveal reveal-delay-5">
+      <div class="pos-img-wrap">
+        <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=600&q=80" alt="الطعنة">
+        <span class="pos-level beginner">مبتدئ</span>
+      </div>
+      <div class="pos-body">
+        <div class="pos-name">الطعنة (Lunge)</div>
+        <div class="pos-info">
+          <span class="pos-meta"><i class="fa-solid fa-fire"></i> 3 جولات</span>
+          <span class="pos-meta"><i class="fa-solid fa-repeat"></i> 12 لكل ساق</span>
+        </div>
+        <p class="pos-desc">قدم أمامية وأخرى خلفية. اخفض جسمك حتى تكون الركبة الخلفية قريبة من الأرض، جذعك عمودي. ارتفع عبر القدم الأمامية دون أن تميل للأمام.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ───────────── CTA BANNER ───────────── -->
+<section class="cta-banner" id="cta" style="padding:5rem">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2 class="cta-title">ابدأ التدريب<br><span>اليوم!</span></h2>
+    <p class="cta-sub">لا أعذار · لا تأجيل · فقط نتائج حقيقية</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-primary"><i class="fa-brands fa-instagram"></i> تابعنا على انستغرام</a>
+      <a href="#categories" class="btn-secondary"><i class="fa-solid fa-dumbbell"></i> استعرض البرامج</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FOOTER ───────────── -->
+<footer id="contact">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <div class="footer-logo-icon"><i class="fa-solid fa-dumbbell"></i></div>
+        <span style="color:#fff">MY</span><span style="color:var(--red)">MUSCLES</span>
+      </div>
+      <p>منصتك الأولى لبناء جسم مثالي بأفضل البرامج التدريبية واحترافية عالية. سواء في المنزل أو الصالة — نحن معك في كل خطوة.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/domx.54?igsh=MXd2cjF3NjAwMndidA==" target="_blank" class="social-btn instagram" title="Instagram @domx.54">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>الأقسام</h4>
+      <ul class="footer-links">
+        <li><a href="#categories">قوة العضلات</a></li>
+        <li><a href="#categories">كارديو</a></li>
+        <li><a href="#categories">HIIT</a></li>
+        <li><a href="#categories">المرونة</a></li>
+        <li><a href="#categories">التغذية</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>المعدات</h4>
+      <ul class="footer-links">
+        <li><a href="#equipment">الدامبل</a></li>
+        <li><a href="#equipment">البار</a></li>
+        <li><a href="#equipment">الكيتلبيل</a></li>
+        <li><a href="#equipment">بار العقلة</a></li>
+        <li><a href="#equipment">حبال المقاومة</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>تواصل معنا</h4>
+      <ul class="footer-links">
+        <li><a href="tel:+213000000000">+213 000 000 000</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#e58c8b838aa5889c88909686898096cb819f"><span class="__cf_email__" data-cfemail="5c35323a331c312531292f3f30392f723826">[email&#160;protected]</span></a></li>
+        <li><a href="#">الجزائر · الخروبة</a></li>
+      </ul>
+      <div style="margin-top:1.5rem">
+        <a href="https://www.instagram.com/domx.54?igsh=MXd2cjF3NjAwMndidA==" target="_blank" class="btn-primary" style="font-size:0.85rem; padding:0.6rem 1.2rem; display:inline-flex; gap:0.5rem; align-items:center; text-decoration:none">
+          <i class="fa-brands fa-instagram"></i> تابعنا الآن
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">
+      <i class="fa-solid fa-copyright" style="color:var(--red)"></i>
+      2025 <span>My Muscles</span>. جميع الحقوق محفوظة.
+    </div>
+
+    <div class="footer-dev">
+      <div>
+        <div class="footer-dev-text">مُصمّم ومُبرمج بكل حب بواسطة</div>
+        <div class="footer-dev-name"><span>قصري</span> ناجي</div>
+      </div>
+      <a href="https://www.instagram.com/domx.54?igsh=MXd2cjF3NjAwMndidA==" target="_blank" class="dev-ig-btn">
+        <i class="fa-brands fa-instagram"></i> @domx.54
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ───────────── DETAIL MODAL ───────────── -->
+<div class="detail-modal" id="detailModal">
+  <div class="detail-inner">
+    <button class="detail-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="detail-img-wrap">
+      <img class="detail-hero-img" id="modalImg" src="" alt="">
+      <div class="detail-hero-overlay"></div>
+      <div class="detail-title-over" id="modalTitle"></div>
+    </div>
+    <div class="detail-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ───────────── SCRIPTS ───────────── -->
+<script>
+// ── DATA ──────────────────────────────────────────────
+const equipmentData = {
+  dumbbell: {
+    title: 'الدامبل', subtitle: 'Dumbbell',
+    img: 'https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=900&q=80',
+    tags: ['الصدر','البايسبس','الترايسبس','الأكتاف','الظهر','القدرة التحمل'],
+    info: [{num:'3-5', label:'جولات مثالية'},{num:'8-15', label:'تكرار للمجموعة'},{num:'60 ث', label:'راحة بين الجولات'}],
+    desc: 'الدامبل هو أكثر أدوات الجيم تنوعاً وفاعلية. يسمح بمدى حركة كامل وتدريب أحادي الجانب لتصحيح اختلال العضلات بين الجانبين.',
+    steps: [
+      'اختر وزناً مناسباً — لا ثقيلاً يكسر وضعيتك، ولا خفيفاً لا تحس بحرق.',
+      'حافظ على قبضة محايدة أو مدوّرة حسب التمرين (الكيرل، الضغط، الرفع الجانبي).',
+      'تحكم في حركة النزول — الإنزال البطيء يضاعف كسر العضلة وبالتالي نموها.',
+      'نوّع زوايا الحركة: ضغط مائل / أفقي / قرص الكتف لضمان استهداف كامل.',
+      'ابدأ بالتمرين الأصعب وأنت أقوى، ثم انتقل للأخف عند التعب.'
+    ],
+    mistakes: ['رمي الوزن بدل التحكم فيه', 'استخدام وزن ثقيل مع وضعية مكسورة', 'تجاهل الطرف الضعيف', 'التنفس العكسي — ازفر عند الجهد'],
+    tips: ['تقنية الـ Drop Set: ابدأ ثقيل ثم خفف الوزن تدريجياً دون راحة', 'تمرين الكيرل المطرقة يبني البايسبس والساعد معاً', 'الضغط بالدامبل أفضل للصدر من البار بسبب مدى الحركة الأوسع'],
+    youtube: 'https://www.youtube.com/embed/8RvlNKdFuaY'
+  },
+  barbell: {
+    title: 'البار', subtitle: 'Barbell',
+    img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=900&q=80',
+    tags: ['القرفصاء','الرفع الميت','البنش برس','الكتفين','الكور','القوة القصوى'],
+    info: [{num:'4-5', label:'جولات للقوة'},{num:'3-8', label:'تكرار بوزن ثقيل'},{num:'3 دق', label:'راحة بين الجولات'}],
+    desc: 'البار هو ملك المعدات لبناء القوة الحقيقية والكتلة العضلية الضخمة. يُعتبر القرفصاء والرفع الميت والبنش برس بالبار من أقوى التمارين في تاريخ الرياضة.',
+    steps: [
+      'حدد وزنك الأقصى (1RM) ودرّب على 70-85% منه لبناء القوة.',
+      'الحزام الرياضي ضروري عند الأوزان الثقيلة لحماية أسفل الظهر.',
+      'في القرفصاء: البار على العضلة الشوكية، ليس على الرقبة مباشرة.',
+      'في الرفع الميت: ظهرك مستقيم طوال الحركة، ابدأ بدفع الأرض بقدميك.',
+      'في البنش برس: الكتفين لأسفل مثبتان، قوس طبيعي في أسفل الظهر.'
+    ],
+    mistakes: ['الانحناء في الظهر عند الرفع الميت', 'إرخاء الكتفين في البنش برس', 'القرفصاء الضحلة أقل من الموازاة', 'إهمال الإحماء قبل الأوزان الثقيلة'],
+    tips: ['قاعدة التدرج: أضف 2.5 كغ كل أسبوع فقط', 'تمارين "البيج ثري" (القرفصاء، البنش، الرفع الميت) تبني 80% من الجسم', 'استخدم مرآة أو مصوّر لمراقبة وضعيتك باستمرار'],
+    youtube: 'https://www.youtube.com/embed/gey73xiS8F4'
+  },
+  pullbar: {
+    title: 'بار العقلة', subtitle: 'Pull-up Bar',
+    img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=900&q=80',
+    tags: ['الظهر العلوي','البايسبس','الكور','الكتفين','الساعدين','وزن الجسم'],
+    info: [{num:'3-4', label:'جولات'},{num:'6-12', label:'تكرار'},{num:'90 ث', label:'راحة'}],
+    desc: 'العقلة هي أفضل تمرين مجاني لبناء ظهر واسع وعضلات جذع قوية. يعمل على اللاتيسموس دورسي الذي يعطي الجسم شكل الـ V المطلوب.',
+    steps: [
+      'إمسك القضيب بعرض أوسع من الكتفين، راحة اليد للأسفل.',
+      'انظر للأعلى قليلاً، أبعد الكتفين عن الأذنين (لا ترفعهما).',
+      'اسحب نفسك بشد الكوعين نحو الأرض وليس بقوة ذراعيك فقط.',
+      'ذقنك فوق القضيب ثم انزل ببطء كامل (4 ثواني للنزول).',
+      'انزل لامتداد كامل في كل تكرار لضمان حركة كاملة.'
+    ],
+    mistakes: ['التأرجح وسرقة الحركة', 'الانزال بسرعة دون تحكم', 'شد الرقبة للأعلى بدل الجذع', 'الإمساك الضعيف يضعف الأداء'],
+    tips: ['المبتدئ: استخدم مقاومة المطاط للمساعدة', 'متقدم: أضف وزناً بحزام', 'التنويع: عقلة ضيقة للبايسبس، واسعة للظهر العلوي'],
+    youtube: 'https://www.youtube.com/embed/eGo4IYlbE5g'
+  }
+};
+
+const positionsData = {
+  squat: {
+    title: 'القرفصاء', subtitle: 'Squat',
+    img: 'https://images.unsplash.com/photo-1566241832378-917a0f30db2c?w=900&q=80',
+    tags: ['الفخذين','الأرداف','الكور','الساقين','الرباعية','وزن الجسم'],
+    info: [{num:'3-4', label:'جولات'},{num:'15-20', label:'تكرار'},{num:'60 ث', label:'راحة'}],
+    desc: 'القرفصاء ملكة تمارين الجسم السفلي. تعمل على أكبر عضلات الجسم — الفخذين والأرداف — مما يحفز إنتاج هرمون التستوستيرون بشكل كبير.',
+    steps: [
+      'قف بعرض الكتفين أو أوسع قليلاً، أصابع القدمين للخارج 30 درجة.',
+      'صدرك للأعلى، ظهرك مستقيم، نظرتك للأمام أو أعلى قليلاً.',
+      'اخفض جسمك كأنك تجلس على كرسي — ركبتيك تتبعان اتجاه أصابع القدم.',
+      'انزل حتى تكون فخذيك موازية للأرض أو أقل (الموازاة الكاملة أفضل).',
+      'ارتفع بدفع الأرض عبر الكعبين مع شد الأرداف في القمة.'
+    ],
+    mistakes: ['الركبة تسقط للداخل (collapse)', 'الكعب يرتفع عن الأرض — أنت بحاجة إمطالة الكاحل', 'الانحناء الشديد للأمام بسبب ضيق الوركين', 'القرفصاء الضحلة لا تُفعّل الأرداف'],
+    tips: ['قرفصاء وزن الجسم → دامبل → بار: تدرج آمن', 'ضع كعبك على لوح صغير إذا كان كاحلك متصلباً', 'تمرين الجلوس العميق يحسن مرونة الورك للقرفصاء الكاملة'],
+    youtube: 'https://www.youtube.com/embed/ultWZbUMPL8'
+  },
+  pushup: {
+    title: 'الضغط', subtitle: 'Push-Up',
+    img: 'https://images.unsplash.com/photo-1571019613576-2b22c76fd955?w=900&q=80',
+    tags: ['الصدر','الترايسبس','الأكتاف','الكور','الظهر العلوي','وزن الجسم'],
+    info: [{num:'3', label:'جولات'},{num:'10-20', label:'تكرار'},{num:'45 ث', label:'راحة'}],
+    desc: 'الضغط هو التمرين الأكثر شهرة في العالم — وبسبب وجيه. يُنمّي الصدر والأكتاف والترايسبس ويقوي الكور بشكل كامل، ولا يحتاج لأي معدات.',
+    steps: [
+      'يديك أعرض من الكتفين قليلاً، أصابعك للأمام أو مائلة للخارج.',
+      'جسمك خط مستقيم من الرأس للقدمين — لا ترفع الردفين أو تخفضهما.',
+      'اخفض جسمك ببطء (2-3 ثواني) حتى يكاد صدرك يلمس الأرض.',
+      'في الأسفل: مرفقيك يشكلان زاوية 45° مع جسمك، ليس 90°.',
+      'ارفع بقوة مع شد الكور والأرداف.'
+    ],
+    mistakes: ['رفع الردفين (Sagging hips)', 'الضغط بمرفقين منفرجين 90°يؤذي الكتف', 'تحريك الرأس بدل الصدر للقاع', 'عدم النزول للأسفل الكامل'],
+    tips: ['مبتدئ: ابدأ على الركب ثم انتقل للكامل', 'متقدم: الضغط الانفجاري (Clap Push-Up)', 'الضغط بالقرص الضيق يركّز على الترايسبس أكثر'],
+    youtube: 'https://www.youtube.com/embed/IODxDxX7oi4'
+  },
+  deadlift: {
+    title: 'الرفع الميت', subtitle: 'Deadlift',
+    img: 'https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=900&q=80',
+    tags: ['الظهر الكامل','الأرداف','الفخذين','الساعدين','الكور','القوة'],
+    info: [{num:'4', label:'جولات'},{num:'6-10', label:'تكرار'},{num:'3 دق', label:'راحة'}],
+    desc: 'الرفع الميت هو أب التمارين المركّبة. يعمل على أكثر من 70% من عضلات الجسم في حركة واحدة. يبني قوة حقيقية ووظيفية تُترجم في الحياة اليومية.',
+    steps: [
+      'البار أمامك، قدماك بعرض الورك، الأصابع تحت البار.',
+      'انزل بالورك للخلف — لا تنزل بالركبة مثل القرفصاء.',
+      'أمسك البار بقبضة مزدوجة، شد لوحَي كتفيك للأسفل والخلف.',
+      'خذ نفساً عميقاً واملأ بطنك، ثم ارفع بدفع الأرض بالقدمين.',
+      'البار يبقى قريباً من الجسم طوال الحركة — يمس الساق حرفياً.'
+    ],
+    mistakes: ['انحناء الظهر — الأكثر خطورة على الإطلاق', 'رفع البار بعيداً عن الجسم يضاعف الضغط على الظهر', 'شد الظهر بدل دفع الأرض في البداية', 'النزول المفاجئ بدون تحكم'],
+    tips: ['تمرين الـ Romanian Deadlift (RDL) أسهل وأكثر أماناً للمبتدئين', 'احزم بطنك كأنك على وشك تلقّي ضربة لحماية العمود الفقري', 'الحزام الرياضي للأوزان فوق 80% من قدرتك القصوى'],
+    youtube: 'https://www.youtube.com/embed/op9kVnSso6Q'
+  }
+};
+
+// ── MODAL FUNCTIONS ──────────────────────────────────
+function openModal(data) {
+  const modal = document.getElementById('detailModal');
+  document.getElementById('modalImg').src = data.img;
+  document.getElementById('modalTitle').innerHTML = data.title + ' <span>' + data.subtitle + '</span>';
+
+  const tagsHtml = data.tags.map(t => `<span class="detail-tag">${t}</span>`).join('');
+  const infoHtml = data.info.map(i => `<div class="detail-info-box"><div class="dib-num">${i.num}</div><div class="dib-label">${i.label}</div></div>`).join('');
+  const stepsHtml = data.steps.map((s,i) => `<li><span class="step-num">${i+1}</span>${s}</li>`).join('');
+  const mistakesHtml = data.mistakes.map(m => `<li>${m}</li>`).join('');
+  const tipsHtml = data.tips.map(t => `<li>${t}</li>`).join('');
+
+  document.getElementById('modalBody').innerHTML = `
+    <div class="detail-tags">${tagsHtml}</div>
+    <p style="color:var(--muted);font-size:0.95rem;line-height:1.8;margin-bottom:1.8rem">${data.desc}</p>
+    <div class="detail-section-title">معلومات التمرين</div>
+    <div class="detail-info-grid">${infoHtml}</div>
+    <div class="detail-section-title">خطوات الأداء الصحيح</div>
+    <ul class="detail-steps">${stepsHtml}</ul>
+    <div class="detail-section-title">أخطاء شائعة يجب تجنبها</div>
+    <div class="detail-mistakes"><ul>${mistakesHtml}</ul></div>
+    <div class="detail-section-title">نصائح الاحتراف</div>
+    <div class="detail-tips"><ul>${tipsHtml}</ul></div>
+    <div class="detail-section-title">فيديو توضيحي</div>
+    <div class="detail-yt"><iframe src="${data.youtube}?rel=0" allowfullscreen loading="lazy"></iframe></div>
+  `;
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('detailModal').classList.remove('open');
+  document.body.style.overflow = '';
+  // Stop YouTube
+  const iframe = document.querySelector('.detail-yt iframe');
+  if (iframe) iframe.src = iframe.src;
+}
+
+document.getElementById('detailModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── SCROLL REVEAL ─────────────────────────────────────
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(el => revealObserver.observe(el));
+
+// ── NAV SCROLL SHADOW ─────────────────────────────────
+const navEl = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  navEl.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
+});
+
+// ── SCROLL REVEAL ─────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Equipment cards
+  const eqCards = document.querySelectorAll('.eq-card');
+  const eqKeys = ['dumbbell','barbell','resistance','kettlebell','pullbar','jumprope','medicineball','treadmill'];
+  const eqDataMap = { dumbbell: equipmentData.dumbbell, barbell: equipmentData.barbell, pullbar: equipmentData.pullbar };
+  
+  eqCards.forEach((card, i) => {
+    card.classList.add('clickable-card');
+    card.style.cursor = 'pointer';
+    const key = eqKeys[i];
+    if (eqDataMap[key]) {
+      card.addEventListener('click', () => openModal(eqDataMap[key]));
+    }
+  });
+
+  // Position cards
+  const posCards = document.querySelectorAll('.pos-card');
+  const posKeys = ['squat','pushup','plank','deadlift','pullup','lunge'];
+  const posDataMap = { squat: positionsData.squat, pushup: positionsData.pushup, deadlift: positionsData.deadlift };
+
+  posCards.forEach((card, i) => {
+    card.classList.add('clickable-card');
+    card.style.cursor = 'pointer';
+    const key = posKeys[i];
+    if (posDataMap[key]) {
+      card.addEventListener('click', () => openModal(posDataMap[key]));
+      // Add view more badge inside
+      const body = card.querySelector('.pos-body');
+      if (body && !body.querySelector('.view-more-badge')) {
+        body.insertAdjacentHTML('beforeend','<div class="view-more-badge"><i class="fa-solid fa-arrow-left"></i> تفاصيل كاملة + فيديو</div>');
+      }
+    } else {
+      const body = card.querySelector('.pos-body');
+      if (body) body.insertAdjacentHTML('beforeend','<div class="view-more-badge" style="opacity:0.4"><i class="fa-solid fa-clock"></i> قريباً</div>');
+    }
+  });
+});
+</script>
+</body>
+</html>
